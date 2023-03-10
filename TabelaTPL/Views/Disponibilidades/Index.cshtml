@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TabelaTPL.Models.Disponibilidade>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+
+<form method="get">
+    <div class="input-group mb-3">
+        <input type="text" name="voluntarioName" class="form-control" placeholder="Pesquisar por voluntário">
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-outline-secondary">Buscar</button>
+        </div>
+    </div>
+</form>
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Disponibilidades)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voluntarios)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disponibilidades)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Voluntarios.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

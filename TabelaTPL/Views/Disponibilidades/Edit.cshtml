@@ -1,0 +1,39 @@
+﻿@model TabelaTPL.Models.Disponibilidade
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Disponibilidade</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Disponibilidades" class="control-label"></label>
+                <select asp-for="Disponibilidades" class="form-control"></select>
+                <span asp-validation-for="Disponibilidades" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VoluntariosId" class="control-label"></label>
+                <select asp-for="VoluntariosId" class="form-control" asp-items="ViewBag.VoluntariosId"></select>
+                <span asp-validation-for="VoluntariosId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

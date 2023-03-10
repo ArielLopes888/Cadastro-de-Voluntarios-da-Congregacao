@@ -1,0 +1,41 @@
+﻿@model TabelaTPL.Models.Disponibilidade
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h4>Cadastrar Disponibilidade:</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Disponibilidades" class="control-label">Dias e Horários</label>
+                <select asp-for="Disponibilidades" class="form-control" asp-items="@Html.GetEnumSelectList<Disponibiilidade>()">
+                    <option value="">Selecione uma opção</option>
+                </select>
+                <span asp-validation-for="Disponibilidades" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="VoluntariosId" class="control-label">Seu número identificador</label>
+                <select asp-for="VoluntariosId" class ="form-control" asp-items="ViewBag.VoluntariosId">
+                    <option value="">Selecione seu número Identificador</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar para a lista de disponibilidades</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
