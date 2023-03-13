@@ -4,49 +4,41 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">Detalhes do Voluntário</h2>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">Nome:</dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-3">Telefone:</dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Telefone)
+            </dd>
+            <dt class="col-sm-3">Gênero:</dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Sexo)
+            </dd>
+            <dt class="col-sm-3">Informações:</dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Informacoes)
+            </dd>
+            <dt class="col-sm-3">Disponibilidades:</dt>
+            <dd class="col-sm-9">
+                <ul>
+                    @foreach (var disponibilidade in Model.Disponibilidade)
+                    {
+                        <li>@disponibilidade.Disponibilidades</li>
+                    }
+                </ul>
+            </dd>
+        </dl>
+    </div>
 
-<div>
-    <h4>Voluntarios</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Telefone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Sexo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Sexo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Informacoes)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Informacoes)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Disponibilidade)
-        </dt>
-        @foreach (var disponibilidade in Model.Disponibilidade)
-        {
-            <li>@disponibilidade.Disponibilidades</li>
-        }
-       @* <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Disponibilidade)
-        </dd>*@
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <div class="card-footer">
+        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@Model?.Id">Editar</a>
+        <a class="btn btn-outline-secondary" asp-action="Index">Voltar para a lista</a>
+    </div>
 </div>
