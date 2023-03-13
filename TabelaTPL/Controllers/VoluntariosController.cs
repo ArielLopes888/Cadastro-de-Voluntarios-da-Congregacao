@@ -20,9 +20,17 @@ namespace TabelaTPL.Controllers
         }
 
         // GET: Voluntarios
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string nome)
         {
-              return View(await _context.Voluntarios.ToListAsync());
+            if (!string.IsNullOrEmpty(nome))
+            {
+                var voluntarios = _context.Voluntarios.Where(v => v.Name.Contains(nome));
+                return View(await voluntarios.ToListAsync());
+            }
+            else
+            {
+                return View(await _context.Voluntarios.ToListAsync());
+            }
         }
 
         // GET: Voluntarios/Details/5
